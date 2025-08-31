@@ -250,25 +250,27 @@ export default function IntakeForm() {
 function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void }) {
   return (
     <div>
-      <div className="flex items-center mb-6">
-        <span className="text-2xl mr-3">🧠</span>
-        <h2 className="text-2xl font-bold text-gray-900">Learner Profile & Self-Regulation</h2>
+      <div className="flex items-center mb-8">
+        <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+          <span className="text-2xl">🧠</span>
+        </div>
+        <h2 className="text-3xl font-bold text-white bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">Learner Profile & Self-Regulation</h2>
       </div>
       
       <div className="space-y-6">
         {/* Role Selection Question */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
+          <label className="block text-lg font-semibold text-purple-200 mb-4">
             Which of these sounds like your current role?
           </label>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {[
               'BFSI',
               'Manufacturing', 
               'Sales & Marketing',
               'IT Consultancy'
             ].map((role) => (
-              <label key={role} className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+              <label key={role} className="group">
                 <input
                   type="checkbox"
                   checked={responses.currentRoles?.includes(role) || false}
@@ -280,9 +282,18 @@ function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse
                       onInputChange('currentRoles', currentRoles.filter(r => r !== role))
                     }
                   }}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="sr-only"
                 />
-                <span className="ml-3 text-sm font-medium text-gray-900">{role}</span>
+                <div className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 backdrop-blur-sm ${
+                  responses.currentRoles?.includes(role)
+                    ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30 border-purple-400 shadow-lg transform scale-105'
+                    : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/30'
+                }`}>
+                  <span className="text-white font-medium">{role}</span>
+                  {responses.currentRoles?.includes(role) && (
+                    <span className="float-right text-purple-300">✓</span>
+                  )}
+                </div>
               </label>
             ))}
           </div>
@@ -551,22 +562,29 @@ function Step6({ responses, onInputChange }: { responses: Partial<IntakeResponse
 // Reusable Components
 function QuestionSlider({ label, value, onChange }: { label: string, value: number, onChange: (value: number) => void }) {
   return (
-    <div>
-      <label className="form-label">{label}</label>
+    <div className="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+      <label className="block text-lg font-medium text-purple-200 mb-4">{label}</label>
       <div className="flex items-center space-x-4">
-        <span className="text-sm text-gray-500 w-8">1</span>
-        <input
-          type="range"
-          min="1"
-          max="5"
-          value={value}
-          onChange={(e) => onChange(parseInt(e.target.value))}
-          className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-        />
-        <span className="text-sm text-gray-500 w-8">5</span>
-        <span className="text-lg font-medium text-primary-600 w-8 text-center">{value}</span>
+        <span className="text-sm text-purple-300 w-8 font-medium">1</span>
+        <div className="flex-1 relative">
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={value}
+            onChange={(e) => onChange(parseInt(e.target.value))}
+            className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider-modern"
+            style={{
+              background: `linear-gradient(to right, rgb(168 85 247) 0%, rgb(236 72 153) ${((value - 1) / 4) * 100}%, rgba(255,255,255,0.2) ${((value - 1) / 4) * 100}%, rgba(255,255,255,0.2) 100%)`
+            }}
+          />
+        </div>
+        <span className="text-sm text-purple-300 w-8 font-medium">5</span>
+        <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+          <span className="text-lg font-bold text-white">{value}</span>
+        </div>
       </div>
-      <div className="flex justify-between text-xs text-gray-400 mt-1">
+      <div className="flex justify-between text-sm text-purple-300 mt-3">
         <span>Strongly Disagree</span>
         <span>Strongly Agree</span>
       </div>
