@@ -286,12 +286,12 @@ function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse
                 />
                 <div className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 backdrop-blur-sm ${
                   responses.currentRoles?.includes(role)
-                    ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30 border-purple-400 shadow-lg transform scale-105'
-                    : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/30'
+                    ? 'bg-gradient-to-r from-purple-500/50 to-pink-500/50 border-purple-400 shadow-lg transform scale-105'
+                    : 'bg-white/20 border-white/30 hover:bg-white/30 hover:border-white/40 hover:shadow-md'
                 }`}>
-                  <span className="text-white font-medium">{role}</span>
+                  <span className="text-white font-semibold drop-shadow-sm">{role}</span>
                   {responses.currentRoles?.includes(role) && (
-                    <span className="float-right text-purple-300">✓</span>
+                    <span className="float-right text-green-300 font-bold text-lg">✓</span>
                   )}
                 </div>
               </label>
