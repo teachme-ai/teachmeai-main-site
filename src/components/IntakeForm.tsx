@@ -271,7 +271,7 @@ export default function IntakeForm() {
 }
 
 // Step Components
-function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void }) {
+function Step1({ responses, onInputChange, validationErrors = {} }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void, validationErrors?: {[key: string]: string} }) {
   return (
     <div>
       <div className="flex items-center mb-8">
@@ -359,7 +359,7 @@ function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse
   )
 }
 
-function Step2({ responses, onInputChange }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void }) {
+function Step2({ responses, onInputChange, validationErrors = {} }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void, validationErrors?: {[key: string]: string} }) {
   return (
     <div>
       <div className="flex items-center mb-6">
@@ -396,7 +396,7 @@ function Step2({ responses, onInputChange }: { responses: Partial<IntakeResponse
   )
 }
 
-function Step3({ responses, onInputChange }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void }) {
+function Step3({ responses, onInputChange, validationErrors = {} }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void, validationErrors?: {[key: string]: string} }) {
   return (
     <div>
       <div className="flex items-center mb-6">
@@ -436,7 +436,7 @@ function Step4({
   responses: Partial<IntakeResponse>, 
   onInputChange: (field: keyof IntakeResponse, value: any) => void,
   onVarkChange: (type: keyof IntakeResponse['varkPreferences'], value: number) => void,
-  validationErrors: {[key: string]: string}
+  validationErrors?: {[key: string]: string}
 }) {
   return (
     <div>
@@ -514,7 +514,7 @@ function Step4({
   )
 }
 
-function Step5({ responses, onInputChange }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void }) {
+function Step5({ responses, onInputChange, validationErrors = {} }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void, validationErrors?: {[key: string]: string} }) {
   return (
     <div>
       <div className="flex items-center mb-6">
@@ -551,7 +551,7 @@ function Step5({ responses, onInputChange }: { responses: Partial<IntakeResponse
   )
 }
 
-function Step6({ responses, onInputChange }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void }) {
+function Step6({ responses, onInputChange, validationErrors = {} }: { responses: Partial<IntakeResponse>, onInputChange: (field: keyof IntakeResponse, value: any) => void, validationErrors?: {[key: string]: string} }) {
   return (
     <div>
       <div className="flex items-center mb-6">
