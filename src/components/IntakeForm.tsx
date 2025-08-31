@@ -201,6 +201,7 @@ export default function IntakeForm() {
         <Step2
           responses={responses}
           onInputChange={handleInputChange}
+          validationErrors={validationErrors}
         />
       )}
       
@@ -208,6 +209,7 @@ export default function IntakeForm() {
         <Step3
           responses={responses}
           onInputChange={handleInputChange}
+          validationErrors={validationErrors}
         />
       )}
       
@@ -224,6 +226,7 @@ export default function IntakeForm() {
         <Step5
           responses={responses}
           onInputChange={handleInputChange}
+          validationErrors={validationErrors}
         />
       )}
       
@@ -231,6 +234,7 @@ export default function IntakeForm() {
         <Step6
           responses={responses}
           onInputChange={handleInputChange}
+          validationErrors={validationErrors}
         />
       )}
 
