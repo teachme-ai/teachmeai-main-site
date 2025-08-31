@@ -274,13 +274,13 @@ function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse
         <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl flex items-center justify-center mr-4 shadow-lg">
           <span className="text-2xl">🧠</span>
         </div>
-        <h2 className="text-3xl font-bold text-white bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">Learner Profile & Self-Regulation</h2>
+        <h2 className="text-3xl font-bold text-white drop-shadow-lg">Learner Profile & Self-Regulation</h2>
       </div>
       
       <div className="space-y-6">
         {/* Role Selection Question */}
         <div>
-          <label className="block text-lg font-semibold text-purple-200 mb-4">
+          <label className="block text-xl font-bold text-white mb-4 drop-shadow-lg">
             Which of these sounds like your current role?
           </label>
           <div className="grid grid-cols-2 gap-4">
@@ -306,12 +306,12 @@ function Step1({ responses, onInputChange }: { responses: Partial<IntakeResponse
                 />
                 <div className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 backdrop-blur-sm ${
                   responses.currentRoles?.includes(role)
-                    ? 'bg-gradient-to-r from-purple-500/50 to-pink-500/50 border-purple-400 shadow-lg transform scale-105'
-                    : 'bg-white/20 border-white/30 hover:bg-white/30 hover:border-white/40 hover:shadow-md'
+                    ? 'bg-gradient-to-r from-purple-500/70 to-pink-500/70 border-purple-300 shadow-lg transform scale-105'
+                    : 'bg-white/40 border-white/50 hover:bg-white/60 hover:border-white/70 hover:shadow-md'
                 }`}>
-                  <span className="text-white font-semibold drop-shadow-sm">{role}</span>
+                  <span className="text-gray-900 font-bold text-lg">{role}</span>
                   {responses.currentRoles?.includes(role) && (
-                    <span className="float-right text-green-300 font-bold text-lg">✓</span>
+                    <span className="float-right text-green-600 font-bold text-xl">✓</span>
                   )}
                 </div>
               </label>
@@ -585,9 +585,9 @@ function QuestionSlider({ label, value, onChange, error }: { label: string, valu
     <div className={`p-6 rounded-xl border backdrop-blur-sm hover:bg-white/10 transition-all duration-300 ${
       error ? 'bg-red-500/10 border-red-400/50' : 'bg-white/5 border-white/10'
     }`}>
-      <label className="block text-lg font-medium text-purple-200 mb-4">{label}</label>
+      <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">{label}</label>
       <div className="flex items-center space-x-4">
-        <span className="text-sm text-purple-300 w-8 font-medium">1</span>
+        <span className="text-sm text-white w-8 font-bold drop-shadow-sm">1</span>
         <div className="flex-1 relative">
           <input
             type="range"
@@ -601,18 +601,18 @@ function QuestionSlider({ label, value, onChange, error }: { label: string, valu
             }}
           />
         </div>
-        <span className="text-sm text-purple-300 w-8 font-medium">5</span>
+        <span className="text-sm text-white w-8 font-bold drop-shadow-sm">5</span>
         <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
           <span className="text-lg font-bold text-white">{value}</span>
         </div>
       </div>
-      <div className="flex justify-between text-sm text-purple-300 mt-3">
+      <div className="flex justify-between text-sm text-white font-medium mt-3 drop-shadow-sm">
         <span>Strongly Disagree</span>
         <span>Strongly Agree</span>
       </div>
       {error && (
         <div className="mt-3 p-2 bg-red-500/20 border border-red-400/30 rounded-lg">
-          <p className="text-red-200 text-sm flex items-center">
+          <p className="text-red-100 text-sm flex items-center font-medium">
             <span className="mr-2">⚠️</span>
             {error}
           </p>
