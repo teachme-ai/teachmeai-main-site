@@ -364,7 +364,7 @@ function Step2({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">🎯</span>
-        <h2 className="text-2xl font-bold text-gray-900">Aspirations & Motivation</h2>
+        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Aspirations & Motivation</h2>
       </div>
       
       <div className="space-y-6">
@@ -401,7 +401,7 @@ function Step3({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">⏰</span>
-        <h2 className="text-2xl font-bold text-gray-900">Pain Points & Challenges</h2>
+        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Pain Points & Challenges</h2>
       </div>
       
       <div className="space-y-6">
@@ -412,7 +412,7 @@ function Step3({ responses, onInputChange, validationErrors = {} }: { responses:
         />
         
         <div>
-          <label className="form-label">
+          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
             What&apos;s most stressful or frustrating about learning new tools right now?
           </label>
           <textarea
@@ -442,13 +442,13 @@ function Step4({
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">👤</span>
-        <h2 className="text-2xl font-bold text-gray-900">Learner Type & Preferences</h2>
+        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Learner Type & Preferences</h2>
       </div>
       
       <div className="space-y-6">
         <div>
-          <label className="form-label">
-            Which best describes you? <span className="text-red-500">*</span>
+          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
+            Which best describes you? <span className="text-red-300">*</span>
           </label>
           <div className="space-y-3">
             {[
@@ -457,14 +457,14 @@ function Step4({
               { value: 'reflector', label: 'Reflector/Diverger (observe + reflect)' },
               { value: 'pragmatist', label: 'Pragmatist/Converger (problem-first, practical)' }
             ].map((option) => (
-              <label key={option.value} className="flex items-center">
+              <label key={option.value} className="flex items-center text-white font-medium">
                 <input
                   type="radio"
                   name="learnerType"
                   value={option.value}
                   checked={responses.learnerType === option.value}
                   onChange={(e) => onInputChange('learnerType', e.target.value)}
-                  className="mr-3 text-primary-600 focus:ring-primary-500"
+                  className="mr-3 text-purple-500 focus:ring-purple-400"
                 />
                 {option.label}
               </label>
@@ -479,7 +479,7 @@ function Step4({
         </div>
         
         <div>
-          <label className="form-label">VARK Learning Preferences (rate 1-5 each)</label>
+          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">VARK Learning Preferences (rate 1-5 each)</label>
           <div className="space-y-4">
             <QuestionSlider
               label="Visual"
@@ -519,12 +519,12 @@ function Step5({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">🏆</span>
-        <h2 className="text-2xl font-bold text-gray-900">Gains & Outcomes</h2>
+        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Gains & Outcomes</h2>
       </div>
       
       <div className="space-y-6">
         <div>
-          <label className="form-label">
+          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
             What concrete benefits will make this journey worthwhile?
           </label>
           <textarea
@@ -536,7 +536,7 @@ function Step5({ responses, onInputChange, validationErrors = {} }: { responses:
         </div>
         
         <div>
-          <label className="form-label">
+          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
             Where do you want to apply these skills in the short term?
           </label>
           <textarea
@@ -556,11 +556,11 @@ function Step6({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">🧠</span>
-        <h2 className="text-2xl font-bold text-gray-900">Review & Submit</h2>
+        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Review & Submit</h2>
       </div>
       
       <div className="space-y-4">
-        <p className="text-gray-600 mb-6">
+        <p className="text-white mb-6 drop-shadow-sm">
           Please review your responses before submitting. You can go back to any previous step to make changes.
         </p>
         
