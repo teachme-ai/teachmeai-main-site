@@ -3,6 +3,8 @@ import { IntakeResponse, IMPACTAnalysis } from '@/types'
 import { analyzeWithAI } from '@/lib/ai-analysis'
 import { saveToGoogleSheets } from '@/lib/google-sheets'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     console.log('🚀 API Route: Starting intake submission...')
