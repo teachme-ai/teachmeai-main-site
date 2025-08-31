@@ -39,19 +39,39 @@ export default function IntakeForm() {
   }
 
   const validateStep = (step: number): boolean => {
-    // Only validate learnerType on Step 4
-    if (step === 4) {
-      if (!responses.learnerType) {
-        setValidationErrors({ learnerType: 'Please select a learner type to continue' })
-        return false
-      } else {
-        setValidationErrors({}) // Clear errors if validation passes
-        return true
-      }
+    const errors: {[key: string]: string} = {}
+    
+    if (step === 1) {
+      if (!responses.goalSettingConfidence) errors.goalSettingConfidence = 'Please rate your goal setting confidence'
+      if (!responses.newApproachesFrequency) errors.newApproachesFrequency = 'Please rate how often you try new approaches'
+      if (!responses.reflectionFrequency) errors.reflectionFrequency = 'Please rate your reflection frequency'
+      if (!responses.aiToolsConfidence) errors.aiToolsConfidence = 'Please rate your AI tools confidence'
+      if (!responses.resilienceLevel) errors.resilienceLevel = 'Please rate your resilience level'
     }
     
-    // For other steps, no validation needed
-    return true
+    if (step === 2) {
+      if (!responses.clearCareerVision) errors.clearCareerVision = 'Please rate your career vision clarity'
+      if (!responses.successDescription) errors.successDescription = 'Please rate your success description clarity'
+      if (!responses.learningForChallenge) errors.learningForChallenge = 'Please rate your learning for challenge'
+      if (!responses.outcomeDrivenLearning) errors.outcomeDrivenLearning = 'Please rate your outcome-driven learning'
+    }
+    
+    if (step === 3) {
+      if (!responses.timeBarrier) errors.timeBarrier = 'Please rate your time barrier level'
+    }
+    
+    if (step === 4) {
+      if (!responses.learnerType) errors.learnerType = 'Please select a learner type to continue'
+      if (!responses.skillStage) errors.skillStage = 'Please rate your skill stage'
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors)
+      return false
+    } else {
+      setValidationErrors({})
+      return true
+    }
   }
 
   const nextStep = () => {
@@ -71,8 +91,7 @@ export default function IntakeForm() {
 
   const handleSubmit = async () => {
     // Final validation before submission
-    if (!responses.learnerType) {
-      setValidationErrors({ learnerType: 'Please select a learner type before submitting' })
+    if (!validateStep(1) || !validateStep(2) || !validateStep(3) || !validateStep(4)) {
       return
     }
 
@@ -174,6 +193,7 @@ export default function IntakeForm() {
         <Step1
           responses={responses}
           onInputChange={handleInputChange}
+          validationErrors={validationErrors}
         />
       )}
       
@@ -560,9 +580,11 @@ function Step6({ responses, onInputChange }: { responses: Partial<IntakeResponse
 }
 
 // Reusable Components
-function QuestionSlider({ label, value, onChange }: { label: string, value: number, onChange: (value: number) => void }) {
+function QuestionSlider({ label, value, onChange, error }: { label: string, value: number, onChange: (value: number) => void, error?: string }) {
   return (
-    <div className="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+    <div className={`p-6 rounded-xl border backdrop-blur-sm hover:bg-white/10 transition-all duration-300 ${
+      error ? 'bg-red-500/10 border-red-400/50' : 'bg-white/5 border-white/10'
+    }`}>
       <label className="block text-lg font-medium text-purple-200 mb-4">{label}</label>
       <div className="flex items-center space-x-4">
         <span className="text-sm text-purple-300 w-8 font-medium">1</span>
@@ -588,6 +610,14 @@ function QuestionSlider({ label, value, onChange }: { label: string, value: numb
         <span>Strongly Disagree</span>
         <span>Strongly Agree</span>
       </div>
+      {error && (
+        <div className="mt-3 p-2 bg-red-500/20 border border-red-400/30 rounded-lg">
+          <p className="text-red-200 text-sm flex items-center">
+            <span className="mr-2">⚠️</span>
+            {error}
+          </p>
+        </div>
+      )}
     </div>
   )
 }
