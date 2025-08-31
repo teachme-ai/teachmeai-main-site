@@ -128,7 +128,7 @@ export default function IntakeForm() {
 
   if (isComplete) {
     return (
-      <div className="card text-center">
+      <div className="backdrop-blur-md bg-gray-900/80 rounded-3xl p-8 border border-gray-600/30 shadow-2xl text-center">
         <div className="text-green-600 mb-4">
           <span className="text-4xl">🎉</span>
         </div>
@@ -162,7 +162,7 @@ export default function IntakeForm() {
   }
 
   return (
-    <div className="card">
+    <div className="backdrop-blur-md bg-gray-900/80 rounded-3xl p-8 border border-gray-600/30 shadow-2xl">
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
@@ -588,8 +588,8 @@ function Step6({ responses, onInputChange, validationErrors = {} }: { responses:
 // Reusable Components
 function QuestionSlider({ label, value, onChange, error }: { label: string, value: number, onChange: (value: number) => void, error?: string }) {
   return (
-    <div className={`p-6 rounded-xl border backdrop-blur-sm hover:bg-white/10 transition-all duration-300 ${
-      error ? 'bg-red-500/10 border-red-400/50' : 'bg-white/5 border-white/10'
+    <div className={`p-6 rounded-xl border backdrop-blur-sm hover:bg-gray-800/90 transition-all duration-300 ${
+      error ? 'bg-red-900/50 border-red-400/50' : 'bg-gray-900/70 border-gray-600/50'
     }`}>
       <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">{label}</label>
       <div className="flex items-center space-x-4">
