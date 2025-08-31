@@ -100,7 +100,7 @@ export default function IntakeForm() {
     try {
       const completeResponses: IntakeResponse = {
         ...responses,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date(new Date().getTime() + (5.5 * 60 * 60 * 1000)).toISOString(),
         sessionId: `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
       } as IntakeResponse
 

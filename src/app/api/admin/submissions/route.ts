@@ -110,7 +110,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ 
       submissions,
       total: submissions.length,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date(new Date().getTime() + (5.5 * 60 * 60 * 1000)).toISOString()
     })
 
   } catch (error) {
@@ -121,7 +121,7 @@ export async function GET(request: NextRequest) {
         { 
           error: 'Failed to fetch submissions',
           details: error.message,
-          timestamp: new Date().toISOString()
+          timestamp: new Date(new Date().getTime() + (5.5 * 60 * 60 * 1000)).toISOString()
         },
         { status: 500 }
       )
