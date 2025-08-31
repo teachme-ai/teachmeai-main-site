@@ -470,7 +470,7 @@ function Step4({
               </label>
             ))}
           </div>
-          {validationErrors.learnerType && (
+          {validationErrors?.learnerType && (
             <p className="text-red-500 text-sm mt-2 flex items-center">
               <span className="mr-1">⚠️</span>
               {validationErrors.learnerType}
