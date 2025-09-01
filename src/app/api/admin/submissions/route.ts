@@ -52,21 +52,29 @@ export async function GET(request: NextRequest) {
         let impactAnalysis: any = {}
         let currentRoles = 'None selected'
         
-        // Actual structure: [timestamp, sessionId, rawResponses(JSON), impactAnalysis(JSON), learnerProfile(text), recommendations(text)]
+        // Actual structure: [timestamp, sessionId, currentRoles, rawResponses(JSON), impactAnalysis(JSON), learnerProfile(text)]
         if (row.length >= 4) {
           try {
-            // Column C: Raw Responses (JSON)
-            if (row[2] && row[2].startsWith('{')) {
-              rawResponses = JSON.parse(row[2])
-              currentRoles = rawResponses?.currentRoles?.join(', ') || 'None selected'
+            // Column B: Current Roles (direct text)
+            currentRoles = row[2] || 'None selected'
+            
+            // Column D: Raw Responses (JSON)
+            if (row[3] && row[3].startsWith('{')) {
+              rawResponses = JSON.parse(row[3])
             }
             
-            // Column D: Impact Analysis (JSON)
-            if (row[3] && row[3].startsWith('{')) {
-              impactAnalysis = JSON.parse(row[3])
+            // Column E: Impact Analysis (JSON)
+            if (row[4] && row[4].startsWith('{')) {
+              impactAnalysis = JSON.parse(row[4])
             }
           } catch (parseError) {
             console.warn(`Parsing error for row ${index}:`, parseError)
+            // Fallback: try to extract from rawResponses if available
+            if (rawResponses?.currentRoles) {
+              currentRoles = Array.isArray(rawResponses.currentRoles) 
+                ? rawResponses.currentRoles.join(', ') 
+                : rawResponses.currentRoles
+            }
           }
         }
         
@@ -80,7 +88,7 @@ export async function GET(request: NextRequest) {
           varkPreferences: rawResponses?.varkPreferences || {},
           recommendations: impactAnalysis?.recommendations || [],
           nextSteps: impactAnalysis?.nextSteps || [],
-          learnerProfile: impactAnalysis?.learnerProfile || row[4] || 'Unknown',
+          learnerProfile: impactAnalysis?.learnerProfile || row[5] || 'Unknown',
           rawData: rawResponses,
           analysis: impactAnalysis
         }

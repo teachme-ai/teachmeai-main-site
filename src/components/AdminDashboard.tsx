@@ -289,24 +289,66 @@ export default function AdminDashboard() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
-                        {Array.isArray(submission.rawData?.currentRoles) 
-                          ? submission.rawData.currentRoles.join(', ') 
-                          : submission.currentRoles || 'None selected'}
+                      <div className="flex flex-wrap gap-1">
+                        {(() => {
+                          const roles = Array.isArray(submission.rawData?.currentRoles) 
+                            ? submission.rawData.currentRoles 
+                            : (submission.currentRoles && submission.currentRoles !== 'None selected' 
+                                ? submission.currentRoles.split(', ') 
+                                : [])
+                          
+                          if (roles.length === 0) {
+                            return <span className="text-sm text-gray-500 italic">None selected</span>
+                          }
+                          
+                          return roles.map((role, idx) => (
+                            <span key={idx} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                              {role}
+                            </span>
+                          ))
+                        })()} 
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-xs text-gray-600 space-y-1">
-                        <div>Goals: {submission.rawData?.goalSettingConfidence || 'N/A'}/5</div>
-                        <div>Resilience: {submission.rawData?.resilienceLevel || 'N/A'}/5</div>
-                        <div>AI Tools: {submission.rawData?.aiToolsConfidence || 'N/A'}/5</div>
+                      <div className="space-y-2">
+                        {['goalSettingConfidence', 'resilienceLevel', 'aiToolsConfidence'].map((field, idx) => {
+                          const value = submission.rawData?.[field]
+                          const labels = ['Goals', 'Resilience', 'AI Tools']
+                          return (
+                            <div key={field} className="flex items-center space-x-2">
+                              <span className="text-xs text-gray-500 w-16">{labels[idx]}:</span>
+                              <div className="flex space-x-1">
+                                {[1,2,3,4,5].map(i => (
+                                  <div key={i} className={`w-2 h-2 rounded-full ${
+                                    i <= (value || 0) ? 'bg-blue-500' : 'bg-gray-200'
+                                  }`}></div>
+                                ))}
+                              </div>
+                              <span className="text-xs text-gray-600">{value || 'N/A'}/5</span>
+                            </div>
+                          )
+                        })}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-xs text-gray-600 space-y-1">
-                        <div>Vision: {submission.rawData?.clearCareerVision || 'N/A'}/5</div>
-                        <div>Challenge: {submission.rawData?.learningForChallenge || 'N/A'}/5</div>
-                        <div>Outcome: {submission.rawData?.outcomeDrivenLearning || 'N/A'}/5</div>
+                      <div className="space-y-2">
+                        {['clearCareerVision', 'learningForChallenge', 'outcomeDrivenLearning'].map((field, idx) => {
+                          const value = submission.rawData?.[field]
+                          const labels = ['Vision', 'Challenge', 'Outcome']
+                          return (
+                            <div key={field} className="flex items-center space-x-2">
+                              <span className="text-xs text-gray-500 w-16">{labels[idx]}:</span>
+                              <div className="flex space-x-1">
+                                {[1,2,3,4,5].map(i => (
+                                  <div key={i} className={`w-2 h-2 rounded-full ${
+                                    i <= (value || 0) ? 'bg-green-500' : 'bg-gray-200'
+                                  }`}></div>
+                                ))}
+                              </div>
+                              <span className="text-xs text-gray-600">{value || 'N/A'}/5</span>
+                            </div>
+                          )
+                        })}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
