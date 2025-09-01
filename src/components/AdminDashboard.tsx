@@ -473,7 +473,7 @@ export default function AdminDashboard() {
                                 : Array.isArray(analysisData.Identify)
                                 ? analysisData.Identify.join('\n')
                                 : JSON.stringify(analysisData.Identify, null, 2)
-                              return content.split('\n').map((line, i) => (
+                              return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
                                 </p>
@@ -496,7 +496,7 @@ export default function AdminDashboard() {
                                 : Array.isArray(analysisData.Motivate)
                                 ? analysisData.Motivate.join('\n')
                                 : JSON.stringify(analysisData.Motivate, null, 2)
-                              return content.split('\n').map((line, i) => (
+                              return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
                                 </p>
@@ -519,7 +519,7 @@ export default function AdminDashboard() {
                                 : Array.isArray(analysisData.Plan)
                                 ? analysisData.Plan.join('\n')
                                 : JSON.stringify(analysisData.Plan, null, 2)
-                              return content.split('\n').map((line, i) => (
+                              return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
                                 </p>
@@ -542,7 +542,7 @@ export default function AdminDashboard() {
                                 : Array.isArray(analysisData.Act)
                                 ? analysisData.Act.join('\n')
                                 : JSON.stringify(analysisData.Act, null, 2)
-                              return content.split('\n').map((line, i) => (
+                              return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
                                 </p>
@@ -565,7 +565,7 @@ export default function AdminDashboard() {
                                 : Array.isArray(analysisData.Check)
                                 ? analysisData.Check.join('\n')
                                 : JSON.stringify(analysisData.Check, null, 2)
-                              return content.split('\n').map((line, i) => (
+                              return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
                                 </p>
@@ -588,7 +588,7 @@ export default function AdminDashboard() {
                                 : Array.isArray(analysisData.Transform)
                                 ? analysisData.Transform.join('\n')
                                 : JSON.stringify(analysisData.Transform, null, 2)
-                              return content.split('\n').map((line, i) => (
+                              return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
                                 </p>
