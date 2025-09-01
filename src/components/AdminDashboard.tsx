@@ -301,7 +301,7 @@ export default function AdminDashboard() {
                             return <span className="text-sm text-gray-500 italic">None selected</span>
                           }
                           
-                          return roles.map((role, idx) => (
+                          return roles.map((role: string, idx: number) => (
                             <span key={idx} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                               {role}
                             </span>
