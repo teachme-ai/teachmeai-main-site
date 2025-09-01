@@ -1,6 +1,10 @@
 import IntakeForm from '@/components/IntakeForm'
+import { track } from '@vercel/analytics'
 
 export default function IntakeAppPage() {
+  // Track page view
+  track('Page View', { page: 'Assessment Form' })
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-gray-100">
       {/* Professional header */}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { track } from '@vercel/analytics'
 import { IntakeResponse } from '@/types'
 
 export default function IntakeForm() {
@@ -77,6 +78,11 @@ export default function IntakeForm() {
   const nextStep = () => {
     if (currentStep < totalSteps) {
       if (validateStep(currentStep)) {
+        // Track step progression
+        track('Step Completed', {
+          step: currentStep,
+          stepName: ['Profile', 'Goals', 'Challenges', 'Preferences', 'Outcomes', 'Review'][currentStep - 1]
+        })
         setCurrentStep(currentStep + 1)
       }
     }
@@ -113,6 +119,12 @@ export default function IntakeForm() {
       })
 
       if (response.ok) {
+        // Track successful assessment completion
+        track('Assessment Completed', {
+          learnerType: responses.learnerType || 'unknown',
+          skillStage: responses.skillStage || 0,
+          currentRoles: responses.currentRoles?.join(',') || 'none'
+        })
         setIsComplete(true)
       } else {
         const errorData = await response.json()
