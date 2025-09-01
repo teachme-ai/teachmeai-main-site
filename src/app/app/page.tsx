@@ -2,41 +2,63 @@ import IntakeForm from '@/components/IntakeForm'
 
 export default function IntakeAppPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-gray-100">
+      {/* Professional header */}
+      <div className="bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">T</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-semibold text-gray-900">TeachMeAI</h1>
+                <p className="text-sm text-gray-500">Professional Learning Assessment</p>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500">
+              Powered by AI-driven IMPACT methodology
+            </div>
+          </div>
+        </div>
       </div>
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Header with glassmorphism */}
-          <div className="text-center mb-12">
-            <div className="backdrop-blur-md bg-white/10 rounded-3xl p-8 border border-white/20 shadow-2xl mb-8">
-              <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-2xl font-bold text-white">🧠</span>
-                </div>
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        {/* Professional introduction */}
+        <div className="text-center mb-12">
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 mb-8">
+            <div className="mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-xl mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent">
-                TeachMeAI Assessment
-              </h1>
-              <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
-                Discover your personalized learning pathway with our AI-powered IMPACT analysis
-              </p>
-              <div className="flex items-center justify-center mt-6 space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce animation-delay-200"></div>
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce animation-delay-400"></div>
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+              Professional Learning Assessment
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
+              Complete our comprehensive assessment to receive a personalized learning roadmap based on proven IMPACT methodology and learning science.
+            </p>
+            <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span>6-Step Assessment</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>AI-Powered Analysis</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                <span>Personalized Roadmap</span>
               </div>
             </div>
           </div>
-          
-          <IntakeForm />
         </div>
+        
+        <IntakeForm />
       </div>
     </div>
   )

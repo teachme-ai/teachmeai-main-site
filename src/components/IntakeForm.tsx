@@ -162,28 +162,59 @@ export default function IntakeForm() {
   }
 
   return (
-    <div className="backdrop-blur-md bg-gray-900/80 rounded-3xl p-8 border border-gray-600/30 shadow-2xl">
-      {/* Progress Bar */}
+    <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+      {/* Professional Progress Bar */}
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-700">
-            Step {currentStep} of {totalSteps}
-          </span>
-          <span className="text-sm text-gray-500">
-            {Math.round((currentStep / totalSteps) * 100)}% Complete
-          </span>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-lg font-semibold text-gray-900">
+              Step {currentStep} of {totalSteps}
+            </h2>
+            <p className="text-sm text-gray-500">Complete all sections for your personalized analysis</p>
+          </div>
+          <div className="text-right">
+            <div className="text-sm font-medium text-gray-900">
+              {Math.round((currentStep / totalSteps) * 100)}% Complete
+            </div>
+            <div className="text-xs text-gray-500">Assessment Progress</div>
+          </div>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
           <div
-            className="bg-primary-600 h-2 rounded-full transition-all duration-300"
+            className="bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${(currentStep / totalSteps) * 100}%` }}
           ></div>
         </div>
-        {/* Validation Status */}
+        {/* Professional Step indicators */}
+        <div className="flex justify-between mt-4">
+          {Array.from({ length: totalSteps }, (_, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${
+                  i + 1 <= currentStep
+                    ? 'bg-blue-600 text-white'
+                    : i + 1 === currentStep + 1
+                    ? 'bg-blue-100 text-blue-600 border-2 border-blue-600'
+                    : 'bg-gray-200 text-gray-500'
+                }`}
+              >
+                {i + 1 < currentStep ? '✓' : i + 1}
+              </div>
+              <div className="text-xs text-gray-500 mt-1 text-center">
+                {['Profile', 'Goals', 'Challenges', 'Preferences', 'Outcomes', 'Review'][i]}
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Professional Validation Status */}
         {Object.keys(validationErrors).length > 0 && (
-          <div className="mt-2 text-sm text-red-600 flex items-center">
-            <span className="mr-1">⚠️</span>
-            Please fix validation errors before proceeding
+          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="flex items-center text-sm text-red-800">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              Please complete all required fields before proceeding
+            </div>
           </div>
         )}
       </div>
@@ -238,31 +269,51 @@ export default function IntakeForm() {
         />
       )}
 
-      {/* Navigation */}
-      <div className="flex justify-between mt-8">
+      {/* Professional Navigation */}
+      <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
         <button
           onClick={prevStep}
           disabled={currentStep === 1}
-          className="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
           Previous
         </button>
         
         {currentStep < totalSteps ? (
           <button
             onClick={nextStep}
-            className="btn-primary flex items-center"
+            className="flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
           >
-            Next →
+            Continue
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         ) : (
           <button
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="btn-primary flex items-center disabled:opacity-50"
+            className="flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-medium rounded-lg transition-colors"
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Intake'}
-            →
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </>
+            ) : (
+              <>
+                Submit Assessment
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </>
+            )}
           </button>
         )}
       </div>
