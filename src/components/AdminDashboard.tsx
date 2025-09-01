@@ -466,13 +466,36 @@ export default function AdminDashboard() {
                             <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2 print:bg-blue-800">I</span>
                             Identify - Assessment
                           </h4>
-                          <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          <div className="text-gray-700 leading-relaxed">
                             {(() => {
                               const content = typeof analysisData.Identify === 'string' 
                                 ? analysisData.Identify 
                                 : Array.isArray(analysisData.Identify)
                                 ? analysisData.Identify.join('\n')
                                 : JSON.stringify(analysisData.Identify, null, 2)
+                              
+                              // Parse numbered points
+                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              
+                              if (points.length > 1) {
+                                return (
+                                  <ul className="space-y-3">
+                                    {points.map((point: string, i: number) => {
+                                      const cleanPoint = point.replace(/^\d+\.\s*\*\*/, '').replace(/\*\*/g, '').trim()
+                                      if (!cleanPoint) return null
+                                      return (
+                                        <li key={i} className="flex items-start">
+                                          <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">
+                                            {i + 1}
+                                          </span>
+                                          <span>{cleanPoint}</span>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )
+                              }
+                              
                               return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
@@ -489,13 +512,36 @@ export default function AdminDashboard() {
                             <span className="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2 print:bg-green-800">M</span>
                             Motivate - Learner Profile
                           </h4>
-                          <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          <div className="text-gray-700 leading-relaxed">
                             {(() => {
                               const content = typeof analysisData.Motivate === 'string' 
                                 ? analysisData.Motivate 
                                 : Array.isArray(analysisData.Motivate)
                                 ? analysisData.Motivate.join('\n')
                                 : JSON.stringify(analysisData.Motivate, null, 2)
+                              
+                              // Parse numbered points
+                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              
+                              if (points.length > 1) {
+                                return (
+                                  <ul className="space-y-3">
+                                    {points.map((point: string, i: number) => {
+                                      const cleanPoint = point.replace(/^\d+\.\s*\*\*/, '').replace(/\*\*/g, '').trim()
+                                      if (!cleanPoint) return null
+                                      return (
+                                        <li key={i} className="flex items-start">
+                                          <span className="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">
+                                            {i + 1}
+                                          </span>
+                                          <span>{cleanPoint}</span>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )
+                              }
+                              
                               return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
@@ -512,13 +558,36 @@ export default function AdminDashboard() {
                             <span className="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2 print:bg-purple-800">P</span>
                             Plan - Learning Opportunities
                           </h4>
-                          <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          <div className="text-gray-700 leading-relaxed">
                             {(() => {
                               const content = typeof analysisData.Plan === 'string' 
                                 ? analysisData.Plan 
                                 : Array.isArray(analysisData.Plan)
                                 ? analysisData.Plan.join('\n')
                                 : JSON.stringify(analysisData.Plan, null, 2)
+                              
+                              // Parse numbered points
+                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              
+                              if (points.length > 1) {
+                                return (
+                                  <ul className="space-y-3">
+                                    {points.map((point: string, i: number) => {
+                                      const cleanPoint = point.replace(/^\d+\.\s*\*\*/, '').replace(/\*\*/g, '').trim()
+                                      if (!cleanPoint) return null
+                                      return (
+                                        <li key={i} className="flex items-start">
+                                          <span className="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">
+                                            {i + 1}
+                                          </span>
+                                          <span>{cleanPoint}</span>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )
+                              }
+                              
                               return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
@@ -535,13 +604,36 @@ export default function AdminDashboard() {
                             <span className="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2 print:bg-orange-800">A</span>
                             Act - Priority Actions
                           </h4>
-                          <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          <div className="text-gray-700 leading-relaxed">
                             {(() => {
                               const content = typeof analysisData.Act === 'string' 
                                 ? analysisData.Act 
                                 : Array.isArray(analysisData.Act)
                                 ? analysisData.Act.join('\n')
                                 : JSON.stringify(analysisData.Act, null, 2)
+                              
+                              // Parse numbered points
+                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              
+                              if (points.length > 1) {
+                                return (
+                                  <ul className="space-y-3">
+                                    {points.map((point: string, i: number) => {
+                                      const cleanPoint = point.replace(/^\d+\.\s*\*\*/, '').replace(/\*\*/g, '').trim()
+                                      if (!cleanPoint) return null
+                                      return (
+                                        <li key={i} className="flex items-start">
+                                          <span className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">
+                                            {i + 1}
+                                          </span>
+                                          <span>{cleanPoint}</span>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )
+                              }
+                              
                               return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
@@ -558,13 +650,36 @@ export default function AdminDashboard() {
                             <span className="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2 print:bg-yellow-800">C</span>
                             Check - Progress & Adjustment
                           </h4>
-                          <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          <div className="text-gray-700 leading-relaxed">
                             {(() => {
                               const content = typeof analysisData.Check === 'string' 
                                 ? analysisData.Check 
                                 : Array.isArray(analysisData.Check)
                                 ? analysisData.Check.join('\n')
                                 : JSON.stringify(analysisData.Check, null, 2)
+                              
+                              // Parse numbered points
+                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              
+                              if (points.length > 1) {
+                                return (
+                                  <ul className="space-y-3">
+                                    {points.map((point: string, i: number) => {
+                                      const cleanPoint = point.replace(/^\d+\.\s*\*\*/, '').replace(/\*\*/g, '').trim()
+                                      if (!cleanPoint) return null
+                                      return (
+                                        <li key={i} className="flex items-start">
+                                          <span className="bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">
+                                            {i + 1}
+                                          </span>
+                                          <span>{cleanPoint}</span>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )
+                              }
+                              
                               return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
@@ -581,13 +696,36 @@ export default function AdminDashboard() {
                             <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2 print:bg-red-800">T</span>
                             Transform - Future Roadmap
                           </h4>
-                          <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                          <div className="text-gray-700 leading-relaxed">
                             {(() => {
                               const content = typeof analysisData.Transform === 'string' 
                                 ? analysisData.Transform 
                                 : Array.isArray(analysisData.Transform)
                                 ? analysisData.Transform.join('\n')
                                 : JSON.stringify(analysisData.Transform, null, 2)
+                              
+                              // Parse numbered points
+                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              
+                              if (points.length > 1) {
+                                return (
+                                  <ul className="space-y-3">
+                                    {points.map((point: string, i: number) => {
+                                      const cleanPoint = point.replace(/^\d+\.\s*\*\*/, '').replace(/\*\*/g, '').trim()
+                                      if (!cleanPoint) return null
+                                      return (
+                                        <li key={i} className="flex items-start">
+                                          <span className="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5 flex-shrink-0">
+                                            {i + 1}
+                                          </span>
+                                          <span>{cleanPoint}</span>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )
+                              }
+                              
                               return content.split('\n').map((line: string, i: number) => (
                                 <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
                                   {line}
