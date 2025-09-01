@@ -12,7 +12,7 @@ export default function HomePage() {
             </div>
             <nav className="hidden md:flex items-center space-x-8 text-sm">
               <Link href="/app" className="hover:text-gray-300 transition-colors">ASSESSMENT</Link>
-              <Link href="/admin" className="hover:text-gray-300 transition-colors">ADMIN</Link>
+              <a href="/admin" className="hover:text-gray-300 transition-colors">ADMIN</a>
               <a href="https://topmate.io/khalidirfan" target="_blank" className="hover:text-gray-300 transition-colors">CONTACT</a>
             </nav>
           </div>

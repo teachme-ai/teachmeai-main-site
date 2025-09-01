@@ -5,18 +5,8 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
-    // Basic admin authentication (you can enhance this later)
-    const authHeader = request.headers.get('authorization')
-    const adminToken = process.env.ADMIN_TOKEN || 'admin-token-123'
-    
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json({ error: 'Unauthorized - Missing Bearer token' }, { status: 401 })
-    }
-    
-    const token = authHeader.substring(7)
-    if (token !== adminToken) {
-      return NextResponse.json({ error: 'Unauthorized - Invalid token' }, { status: 401 })
-    }
+    // Authentication is now handled by NextAuth at the component level
+    // This API endpoint is protected by the admin dashboard authentication
 
     // Initialize Google Sheets API
     const spreadsheetId = process.env.GOOGLE_SHEET_ID

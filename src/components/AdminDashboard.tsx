@@ -66,11 +66,7 @@ export default function AdminDashboard() {
   const fetchSubmissions = async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/admin/submissions', {
-        headers: {
-          'Authorization': 'Bearer admin-token-123'
-        }
-      })
+      const response = await fetch('/api/admin/submissions')
       
       if (!response.ok) {
         throw new Error('Failed to fetch submissions')
