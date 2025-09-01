@@ -326,16 +326,16 @@ function Step1({ responses, onInputChange, validationErrors = {} }: { responses:
   return (
     <div>
       <div className="flex items-center mb-8">
-        <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
           <span className="text-2xl">🧠</span>
         </div>
-        <h2 className="text-3xl font-bold text-white drop-shadow-lg">Learner Profile & Self-Regulation</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Learner Profile & Self-Regulation</h2>
       </div>
       
       <div className="space-y-6">
         {/* Role Selection Question */}
         <div>
-          <label className="block text-xl font-bold text-white mb-4 drop-shadow-lg">
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
             Which of these sounds like your current role?
           </label>
           <div className="grid grid-cols-2 gap-4">
@@ -415,7 +415,7 @@ function Step2({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">🎯</span>
-        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Aspirations & Motivation</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Aspirations & Motivation</h2>
       </div>
       
       <div className="space-y-6">
@@ -452,7 +452,7 @@ function Step3({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">⏰</span>
-        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Pain Points & Challenges</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Pain Points & Challenges</h2>
       </div>
       
       <div className="space-y-6">
@@ -463,7 +463,7 @@ function Step3({ responses, onInputChange, validationErrors = {} }: { responses:
         />
         
         <div>
-          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
             What&apos;s most stressful or frustrating about learning new tools right now?
           </label>
           <textarea
@@ -493,13 +493,13 @@ function Step4({
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">👤</span>
-        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Learner Type & Preferences</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Learner Type & Preferences</h2>
       </div>
       
       <div className="space-y-6">
         <div>
-          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
-            Which best describes you? <span className="text-red-300">*</span>
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
+            Which best describes you? <span className="text-red-600">*</span>
           </label>
           <div className="space-y-3">
             {[
@@ -508,7 +508,7 @@ function Step4({
               { value: 'reflector', label: 'Reflector/Diverger (observe + reflect)' },
               { value: 'pragmatist', label: 'Pragmatist/Converger (problem-first, practical)' }
             ].map((option) => (
-              <label key={option.value} className="flex items-center text-white font-medium">
+              <label key={option.value} className="flex items-center text-gray-900 font-medium">
                 <input
                   type="radio"
                   name="learnerType"
@@ -530,7 +530,7 @@ function Step4({
         </div>
         
         <div>
-          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">VARK Learning Preferences (rate 1-5 each)</label>
+          <label className="block text-lg font-semibold text-gray-900 mb-4">VARK Learning Preferences (rate 1-5 each)</label>
           <div className="space-y-4">
             <QuestionSlider
               label="Visual"
@@ -570,12 +570,12 @@ function Step5({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">🏆</span>
-        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Gains & Outcomes</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Gains & Outcomes</h2>
       </div>
       
       <div className="space-y-6">
         <div>
-          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
             What concrete benefits will make this journey worthwhile?
           </label>
           <textarea
@@ -587,7 +587,7 @@ function Step5({ responses, onInputChange, validationErrors = {} }: { responses:
         </div>
         
         <div>
-          <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
             Where do you want to apply these skills in the short term?
           </label>
           <textarea
@@ -607,11 +607,11 @@ function Step6({ responses, onInputChange, validationErrors = {} }: { responses:
     <div>
       <div className="flex items-center mb-6">
         <span className="text-2xl mr-3">🧠</span>
-        <h2 className="text-2xl font-bold text-white drop-shadow-lg">Review & Submit</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Review & Submit</h2>
       </div>
       
       <div className="space-y-4">
-        <p className="text-white mb-6 drop-shadow-sm">
+        <p className="text-gray-600 mb-6">
           Please review your responses before submitting. You can go back to any previous step to make changes.
         </p>
         
@@ -639,12 +639,12 @@ function Step6({ responses, onInputChange, validationErrors = {} }: { responses:
 // Reusable Components
 function QuestionSlider({ label, value, onChange, error }: { label: string, value: number, onChange: (value: number) => void, error?: string }) {
   return (
-    <div className={`p-6 rounded-xl border backdrop-blur-sm hover:bg-gray-800/90 transition-all duration-300 ${
-      error ? 'bg-red-900/50 border-red-400/50' : 'bg-gray-900/70 border-gray-600/50'
+    <div className={`p-6 rounded-xl border transition-all duration-300 ${
+      error ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
     }`}>
-      <label className="block text-lg font-bold text-white mb-4 drop-shadow-lg">{label}</label>
+      <label className="block text-lg font-semibold text-gray-900 mb-4">{label}</label>
       <div className="flex items-center space-x-4">
-        <span className="text-sm text-white w-8 font-bold drop-shadow-sm">1</span>
+        <span className="text-sm text-gray-700 w-8 font-semibold">1</span>
         <div className="flex-1 relative">
           <input
             type="range"
@@ -654,22 +654,22 @@ function QuestionSlider({ label, value, onChange, error }: { label: string, valu
             onChange={(e) => onChange(parseInt(e.target.value))}
             className="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer slider-modern"
             style={{
-              background: `linear-gradient(to right, rgb(168 85 247) 0%, rgb(236 72 153) ${((value - 1) / 4) * 100}%, rgba(255,255,255,0.2) ${((value - 1) / 4) * 100}%, rgba(255,255,255,0.2) 100%)`
+              background: `linear-gradient(to right, rgb(37 99 235) 0%, rgb(59 130 246) ${((value - 1) / 4) * 100}%, rgb(229 231 235) ${((value - 1) / 4) * 100}%, rgb(229 231 235) 100%)`
             }}
           />
         </div>
-        <span className="text-sm text-white w-8 font-bold drop-shadow-sm">5</span>
-        <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+        <span className="text-sm text-gray-700 w-8 font-semibold">5</span>
+        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
           <span className="text-lg font-bold text-white">{value}</span>
         </div>
       </div>
-      <div className="flex justify-between text-sm text-white font-medium mt-3 drop-shadow-sm">
+      <div className="flex justify-between text-sm text-gray-600 font-medium mt-3">
         <span>Strongly Disagree</span>
         <span>Strongly Agree</span>
       </div>
       {error && (
         <div className="mt-3 p-2 bg-red-500/20 border border-red-400/30 rounded-lg">
-          <p className="text-red-100 text-sm flex items-center font-medium">
+          <p className="text-red-700 text-sm flex items-center font-medium">
             <span className="mr-2">⚠️</span>
             {error}
           </p>
