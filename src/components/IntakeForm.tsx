@@ -1,11 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { track } from '@vercel/analytics'
 import { IntakeResponse } from '@/types'
 
 export default function IntakeForm() {
   const [currentStep, setCurrentStep] = useState(1)
+  
+  // Track page view on component mount
+  useEffect(() => {
+    track('Assessment Started')
+  }, [])
   const [responses, setResponses] = useState<Partial<IntakeResponse>>({
     currentRoles: [],
     varkPreferences: {
