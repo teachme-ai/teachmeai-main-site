@@ -475,7 +475,7 @@ export default function AdminDashboard() {
                                 : JSON.stringify(analysisData.Identify, null, 2)
                               
                               // Parse numbered points
-                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              const points = content.split(/(?=\d+\.)/).filter((p: string) => p.trim())
                               
                               if (points.length > 1) {
                                 return (
@@ -521,7 +521,7 @@ export default function AdminDashboard() {
                                 : JSON.stringify(analysisData.Motivate, null, 2)
                               
                               // Parse numbered points
-                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              const points = content.split(/(?=\d+\.)/).filter((p: string) => p.trim())
                               
                               if (points.length > 1) {
                                 return (
@@ -567,7 +567,7 @@ export default function AdminDashboard() {
                                 : JSON.stringify(analysisData.Plan, null, 2)
                               
                               // Parse numbered points
-                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              const points = content.split(/(?=\d+\.)/).filter((p: string) => p.trim())
                               
                               if (points.length > 1) {
                                 return (
@@ -613,7 +613,7 @@ export default function AdminDashboard() {
                                 : JSON.stringify(analysisData.Act, null, 2)
                               
                               // Parse numbered points
-                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              const points = content.split(/(?=\d+\.)/).filter((p: string) => p.trim())
                               
                               if (points.length > 1) {
                                 return (
@@ -659,7 +659,7 @@ export default function AdminDashboard() {
                                 : JSON.stringify(analysisData.Check, null, 2)
                               
                               // Parse numbered points
-                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              const points = content.split(/(?=\d+\.)/).filter((p: string) => p.trim())
                               
                               if (points.length > 1) {
                                 return (
@@ -705,7 +705,7 @@ export default function AdminDashboard() {
                                 : JSON.stringify(analysisData.Transform, null, 2)
                               
                               // Parse numbered points
-                              const points = content.split(/(?=\d+\.)/).filter(p => p.trim())
+                              const points = content.split(/(?=\d+\.)/).filter((p: string) => p.trim())
                               
                               if (points.length > 1) {
                                 return (
