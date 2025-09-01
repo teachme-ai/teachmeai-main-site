@@ -48,6 +48,7 @@ export default function IntakeForm() {
     const errors: {[key: string]: string} = {}
     
     if (step === 1) {
+      if (!responses.learnerName?.trim()) errors.learnerName = 'Please enter your name to continue'
       if (!responses.goalSettingConfidence) errors.goalSettingConfidence = 'Please rate your goal setting confidence'
       if (!responses.newApproachesFrequency) errors.newApproachesFrequency = 'Please rate how often you try new approaches'
       if (!responses.reflectionFrequency) errors.reflectionFrequency = 'Please rate your reflection frequency'
@@ -350,6 +351,28 @@ function Step1({ responses, onInputChange, validationErrors = {} }: { responses:
       </div>
       
       <div className="space-y-6">
+        {/* Name Input */}
+        <div>
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
+            What's your name? <span className="text-red-600">*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            value={responses.learnerName || ''}
+            onChange={(e) => onInputChange('learnerName', e.target.value)}
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 ${
+              validationErrors?.learnerName ? 'border-red-300 bg-red-50' : 'border-gray-300'
+            }`}
+          />
+          {validationErrors?.learnerName && (
+            <p className="text-red-500 text-sm mt-2 flex items-center">
+              <span className="mr-1">⚠️</span>
+              {validationErrors.learnerName}
+            </p>
+          )}
+        </div>
+        
         {/* Role Selection Question */}
         <div>
           <label className="block text-lg font-semibold text-gray-900 mb-4">

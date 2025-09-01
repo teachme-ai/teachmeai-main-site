@@ -279,7 +279,7 @@ export default function AdminDashboard() {
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
-                            Session {submission.sessionId.slice(-8)}
+                            {submission.rawData?.learnerName || `Session ${submission.sessionId.slice(-8)}`}
                           </div>
                           <div className="text-sm text-gray-500 flex items-center gap-1">
                             <Calendar className="h-3 w-3" />

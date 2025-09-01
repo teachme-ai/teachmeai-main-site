@@ -55,12 +55,18 @@ export async function GET(request: NextRequest) {
         // Actual structure: [timestamp, sessionId, currentRoles, rawResponses(JSON), impactAnalysis(JSON), learnerProfile(text)]
         if (row.length >= 4) {
           try {
-            // Column B: Current Roles (direct text)
+            // Column C: Current Roles (direct text)
             currentRoles = row[2] || 'None selected'
             
             // Column D: Raw Responses (JSON)
             if (row[3] && row[3].startsWith('{')) {
               rawResponses = JSON.parse(row[3])
+              // Extract current roles from JSON if not in direct column
+              if ((!currentRoles || currentRoles === 'None selected') && rawResponses?.currentRoles) {
+                currentRoles = Array.isArray(rawResponses.currentRoles) 
+                  ? rawResponses.currentRoles.join(', ') 
+                  : rawResponses.currentRoles
+              }
             }
             
             // Column E: Impact Analysis (JSON)
@@ -69,12 +75,6 @@ export async function GET(request: NextRequest) {
             }
           } catch (parseError) {
             console.warn(`Parsing error for row ${index}:`, parseError)
-            // Fallback: try to extract from rawResponses if available
-            if (rawResponses?.currentRoles) {
-              currentRoles = Array.isArray(rawResponses.currentRoles) 
-                ? rawResponses.currentRoles.join(', ') 
-                : rawResponses.currentRoles
-            }
           }
         }
         

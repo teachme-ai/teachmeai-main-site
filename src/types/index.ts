@@ -1,4 +1,7 @@
 export interface IntakeResponse {
+  // Personal Information
+  learnerName?: string; // Learner's name
+  
   // Professional Role
   currentRoles: string[]; // Selected roles from BFSI, Manufacturing, Sales & Marketing, IT Consultancy
   
