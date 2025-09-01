@@ -36,13 +36,15 @@ export default function AdminDashboard() {
   const [filterType, setFilterType] = useState('all')
   const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null)
 
-  // Redirect to login if not authenticated
+  // Always call useEffect - don't conditionally call hooks
   useEffect(() => {
     if (status === 'loading') return // Still loading
     if (!session) {
       router.push('/admin/login')
       return
     }
+    // Only fetch if authenticated
+    fetchSubmissions()
   }, [session, status, router])
 
   // Don't render anything while checking auth
@@ -59,9 +61,7 @@ export default function AdminDashboard() {
     return null
   }
 
-  useEffect(() => {
-    fetchSubmissions()
-  }, [])
+  // Remove this useEffect since we moved it above
 
   const fetchSubmissions = async () => {
     try {
