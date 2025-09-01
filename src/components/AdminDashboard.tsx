@@ -467,11 +467,18 @@ export default function AdminDashboard() {
                             Identify - Assessment
                           </h4>
                           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                            {String(analysisData.Identify).split('\n').map((line, i) => (
-                              <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
-                                {line}
-                              </p>
-                            ))}
+                            {(() => {
+                              const content = typeof analysisData.Identify === 'string' 
+                                ? analysisData.Identify 
+                                : Array.isArray(analysisData.Identify)
+                                ? analysisData.Identify.join('\n')
+                                : JSON.stringify(analysisData.Identify, null, 2)
+                              return content.split('\n').map((line, i) => (
+                                <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
+                                  {line}
+                                </p>
+                              ))
+                            })()} 
                           </div>
                         </div>
                       )}
@@ -483,11 +490,18 @@ export default function AdminDashboard() {
                             Motivate - Learner Profile
                           </h4>
                           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                            {String(analysisData.Motivate).split('\n').map((line, i) => (
-                              <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
-                                {line}
-                              </p>
-                            ))}
+                            {(() => {
+                              const content = typeof analysisData.Motivate === 'string' 
+                                ? analysisData.Motivate 
+                                : Array.isArray(analysisData.Motivate)
+                                ? analysisData.Motivate.join('\n')
+                                : JSON.stringify(analysisData.Motivate, null, 2)
+                              return content.split('\n').map((line, i) => (
+                                <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
+                                  {line}
+                                </p>
+                              ))
+                            })()} 
                           </div>
                         </div>
                       )}
@@ -499,11 +513,18 @@ export default function AdminDashboard() {
                             Plan - Learning Opportunities
                           </h4>
                           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                            {String(analysisData.Plan).split('\n').map((line, i) => (
-                              <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
-                                {line}
-                              </p>
-                            ))}
+                            {(() => {
+                              const content = typeof analysisData.Plan === 'string' 
+                                ? analysisData.Plan 
+                                : Array.isArray(analysisData.Plan)
+                                ? analysisData.Plan.join('\n')
+                                : JSON.stringify(analysisData.Plan, null, 2)
+                              return content.split('\n').map((line, i) => (
+                                <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
+                                  {line}
+                                </p>
+                              ))
+                            })()} 
                           </div>
                         </div>
                       )}
@@ -515,11 +536,18 @@ export default function AdminDashboard() {
                             Act - Priority Actions
                           </h4>
                           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                            {String(analysisData.Act).split('\n').map((line, i) => (
-                              <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
-                                {line}
-                              </p>
-                            ))}
+                            {(() => {
+                              const content = typeof analysisData.Act === 'string' 
+                                ? analysisData.Act 
+                                : Array.isArray(analysisData.Act)
+                                ? analysisData.Act.join('\n')
+                                : JSON.stringify(analysisData.Act, null, 2)
+                              return content.split('\n').map((line, i) => (
+                                <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
+                                  {line}
+                                </p>
+                              ))
+                            })()} 
                           </div>
                         </div>
                       )}
@@ -531,11 +559,18 @@ export default function AdminDashboard() {
                             Check - Progress & Adjustment
                           </h4>
                           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                            {String(analysisData.Check).split('\n').map((line, i) => (
-                              <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
-                                {line}
-                              </p>
-                            ))}
+                            {(() => {
+                              const content = typeof analysisData.Check === 'string' 
+                                ? analysisData.Check 
+                                : Array.isArray(analysisData.Check)
+                                ? analysisData.Check.join('\n')
+                                : JSON.stringify(analysisData.Check, null, 2)
+                              return content.split('\n').map((line, i) => (
+                                <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
+                                  {line}
+                                </p>
+                              ))
+                            })()} 
                           </div>
                         </div>
                       )}
@@ -547,11 +582,18 @@ export default function AdminDashboard() {
                             Transform - Future Roadmap
                           </h4>
                           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                            {String(analysisData.Transform).split('\n').map((line, i) => (
-                              <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
-                                {line}
-                              </p>
-                            ))}
+                            {(() => {
+                              const content = typeof analysisData.Transform === 'string' 
+                                ? analysisData.Transform 
+                                : Array.isArray(analysisData.Transform)
+                                ? analysisData.Transform.join('\n')
+                                : JSON.stringify(analysisData.Transform, null, 2)
+                              return content.split('\n').map((line, i) => (
+                                <p key={i} className={line.startsWith('*') || line.startsWith('-') ? 'ml-4 mb-1' : 'mb-2'}>
+                                  {line}
+                                </p>
+                              ))
+                            })()} 
                           </div>
                         </div>
                       )}
