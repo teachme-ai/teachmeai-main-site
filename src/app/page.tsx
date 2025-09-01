@@ -2,166 +2,125 @@ import Link from 'next/link'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-white/[0.01] rounded-full blur-3xl animate-pulse animation-delay-4000"></div>
-      </div>
-
-      {/* Minimal Header */}
-      <header className="relative z-10 backdrop-blur-md bg-black/80 border-b border-white/[0.08]">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      {/* Header */}
+      <header className="border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-black font-bold text-lg">T</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-semibold text-white">TeachMeAI</h1>
-                <p className="text-sm text-gray-400">AI-Powered Learning Platform</p>
-              </div>
+            <div className="text-sm font-medium tracking-wider">
+              [ TEACHMEAI ]
             </div>
-            <Link
-              href="/app"
-              className="px-6 py-2.5 bg-white text-black hover:bg-gray-100 rounded-lg font-medium transition-all duration-200 text-sm"
-            >
-              Start Assessment
-            </Link>
+            <nav className="hidden md:flex items-center space-x-8 text-sm">
+              <Link href="/app" className="hover:text-gray-300 transition-colors">ASSESSMENT</Link>
+              <Link href="/admin" className="hover:text-gray-300 transition-colors">ADMIN</Link>
+              <a href="https://topmate.io/khalidirfan" target="_blank" className="hover:text-gray-300 transition-colors">CONTACT</a>
+            </nav>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-24">
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 text-white leading-[0.9] tracking-tight">
-            Transform Your
-            <br />
-            <span className="text-gray-400">Learning Journey</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Get personalized AI-powered learning pathways with our comprehensive IMPACT assessment.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/app"
-              className="group px-8 py-4 bg-white text-black hover:bg-gray-100 rounded-lg font-medium transition-all duration-200"
-            >
-              Start Free Assessment
-              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-            </Link>
-            <a
-              href="https://topmate.io/khalidirfan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 border border-white/20 hover:border-white/40 rounded-lg font-medium transition-all duration-200"
-            >
-              Book Consultation
-            </a>
-          </div>
-        </div>
-
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-24">
+      {/* Bento Grid */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-12 gap-4 h-[calc(100vh-120px)]">
           
-          {/* IMPACT Framework Card */}
-          <div className="md:col-span-2 lg:col-span-3 group">
-            <div className="h-full bg-white/[0.03] border border-white/[0.08] rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-4">
-                  <span className="text-xl">🧠</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-1 text-white">IMPACT Framework</h3>
-                  <p className="text-gray-500 text-sm">Proven Learning Methodology</p>
-                </div>
+          {/* Large Hero Card */}
+          <div className="col-span-12 md:col-span-6 lg:col-span-5 row-span-2">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                  AI LEARNING
+                  <br />
+                  <span className="text-gray-500">ASSESSMENT</span>
+                </h1>
+                <p className="text-gray-400 text-lg mb-8 max-w-md">
+                  Personalized IMPACT analysis powered by advanced AI technology.
+                </p>
+                <Link
+                  href="/app"
+                  className="inline-block px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                >
+                  START ASSESSMENT
+                </Link>
               </div>
-              <p className="text-gray-400 leading-relaxed text-sm">
-                Our comprehensive assessment uses the IMPACT framework: Identify, Motivate, Plan, Act, Check, Transform. 
-                Get scientifically-backed insights into your learning style.
-              </p>
+            </div>
+          </div>
+
+          {/* Services Card */}
+          <div className="col-span-12 md:col-span-6 lg:col-span-4">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-8 flex items-center justify-center">
+              <div className="text-center">
+                <h2 className="text-3xl font-bold mb-4">
+                  IMPACT
+                  <br />FRAMEWORK
+                  <br />AI ANALYSIS
+                  <br />PERSONALIZATION
+                </h2>
+              </div>
             </div>
           </div>
 
           {/* Stats Card */}
-          <div className="group">
-            <div className="h-full bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.05] transition-all duration-300">
-              <div className="text-3xl font-bold text-white mb-2">6</div>
-              <div className="text-white font-medium mb-1 text-sm">Assessment Steps</div>
-              <div className="text-xs text-gray-500">Comprehensive evaluation</div>
+          <div className="col-span-6 md:col-span-3 lg:col-span-3">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-6 flex flex-col justify-center">
+              <div className="text-4xl font-bold mb-2">6</div>
+              <div className="text-sm text-gray-400">ASSESSMENT STEPS</div>
             </div>
           </div>
 
-          {/* AI Analysis Card */}
-          <div className="group">
-            <div className="h-full bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.05] transition-all duration-300">
-              <div className="text-2xl mb-4">🤖</div>
-              <div className="font-medium text-white mb-2 text-sm">AI Analysis</div>
-              <div className="text-xs text-gray-500">Google Gemini Pro</div>
+          {/* AI Card */}
+          <div className="col-span-6 md:col-span-3">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-6 flex flex-col justify-center items-center">
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">🤖</span>
+              </div>
+              <div className="text-sm font-medium">AI POWERED</div>
             </div>
           </div>
 
-          {/* Personalization Card */}
-          <div className="group">
-            <div className="h-full bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.05] transition-all duration-300">
-              <div className="text-2xl mb-4">🎯</div>
-              <div className="font-medium text-white mb-2 text-sm">Personalized</div>
-              <div className="text-xs text-gray-500">Tailored approach</div>
-            </div>
-          </div>
-
-          {/* Process Flow Card */}
-          <div className="md:col-span-4 lg:col-span-6 group">
-            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-8 text-center text-white">How It Works</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-semibold">1</span>
-                  </div>
-                  <h4 className="font-medium text-white mb-2 text-sm">Complete Assessment</h4>
-                  <p className="text-gray-500 text-xs">6-step evaluation of your learning profile</p>
+          {/* Assessment Card */}
+          <div className="col-span-12 md:col-span-6 lg:col-span-4">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-8 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">🧠</span>
                 </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-semibold">2</span>
-                  </div>
-                  <h4 className="font-medium text-white mb-2 text-sm">AI Analysis</h4>
-                  <p className="text-gray-500 text-xs">AI processes using IMPACT framework</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-semibold">3</span>
-                  </div>
-                  <h4 className="font-medium text-white mb-2 text-sm">Get Roadmap</h4>
-                  <p className="text-gray-500 text-xs">Personalized learning plan</p>
-                </div>
+                <h3 className="text-xl font-semibold mb-2">COMPREHENSIVE</h3>
+                <p className="text-gray-400 text-sm">Complete learning profile analysis</p>
               </div>
             </div>
           </div>
 
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-12 max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-white">
-              Ready to Transform Your Learning?
-            </h2>
-            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-              Join professionals who have transformed their learning journey with our AI-powered assessment.
-            </p>
-            <Link
-              href="/app"
-              className="inline-flex items-center px-8 py-4 bg-white text-black hover:bg-gray-100 rounded-lg font-medium transition-all duration-200"
-            >
-              Start Your Assessment Now
-              <span className="ml-2">→</span>
-            </Link>
+          {/* Templates Card */}
+          <div className="col-span-12 md:col-span-6 lg:col-span-5">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-8 flex items-center justify-center">
+              <h2 className="text-4xl font-bold">ROADMAPS</h2>
+            </div>
           </div>
+
+          {/* Contact Card */}
+          <div className="col-span-6 md:col-span-3">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-6 flex items-center justify-center">
+              <h3 className="text-xl font-bold">CONTACT.</h3>
+            </div>
+          </div>
+
+          {/* Consultation Card */}
+          <div className="col-span-6 md:col-span-3">
+            <div className="h-full bg-[#111] border border-white/[0.06] rounded-3xl p-6 flex flex-col justify-center items-center">
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">💬</span>
+              </div>
+              <a 
+                href="https://topmate.io/khalidirfan" 
+                target="_blank"
+                className="text-sm font-medium hover:text-gray-300 transition-colors"
+              >
+                BOOK SESSION
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
