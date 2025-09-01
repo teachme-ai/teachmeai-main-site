@@ -376,16 +376,16 @@ function Step1({ responses, onInputChange, validationErrors = {} }: { responses:
                   }}
                   className="sr-only"
                 />
-                <div className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 backdrop-blur-sm ${
+                <div className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                   responses.currentRoles?.includes(role)
-                    ? 'bg-gradient-to-r from-purple-500/70 to-pink-500/70 border-purple-300 shadow-lg transform scale-105'
-                    : 'bg-white/80 border-gray-300 hover:bg-white/90 hover:border-gray-400 hover:shadow-md'
+                    ? 'bg-blue-50 border-blue-300 shadow-md'
+                    : 'bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm'
                 }`}>
                   <span className={`font-bold text-lg ${
-                    responses.currentRoles?.includes(role) ? 'text-white' : 'text-gray-800'
+                    responses.currentRoles?.includes(role) ? 'text-blue-700' : 'text-gray-800'
                   }`}>{role}</span>
                   {responses.currentRoles?.includes(role) && (
-                    <span className="float-right text-green-200 font-bold text-xl">✓</span>
+                    <span className="float-right text-blue-600 font-bold text-xl">✓</span>
                   )}
                 </div>
               </label>
@@ -657,7 +657,7 @@ function Step6({ responses, onInputChange, validationErrors = {} }: { responses:
 function QuestionSlider({ label, value, onChange, error }: { label: string, value: number, onChange: (value: number) => void, error?: string }) {
   return (
     <div className={`p-6 rounded-xl border transition-all duration-300 ${
-      error ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+      error ? 'bg-red-50 border-red-200' : 'bg-white border-gray-200 hover:bg-gray-50'
     }`}>
       <label className="block text-lg font-semibold text-gray-900 mb-4">{label}</label>
       <div className="flex items-center space-x-4">
