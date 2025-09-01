@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSession, signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { Search, Filter, Download, Eye, Calendar, User, Target } from 'lucide-react'
 
 interface Submission {
@@ -25,12 +27,37 @@ interface AdminData {
 }
 
 export default function AdminDashboard() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
   const [data, setData] = useState<AdminData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterType, setFilterType] = useState('all')
   const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null)
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (status === 'loading') return // Still loading
+    if (!session) {
+      router.push('/admin/login')
+      return
+    }
+  }, [session, status, router])
+
+  // Don't render anything while checking auth
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-600">Loading...</div>
+      </div>
+    )
+  }
+
+  // Don't render if not authenticated
+  if (!session) {
+    return null
+  }
 
   useEffect(() => {
     fetchSubmissions()
@@ -153,10 +180,25 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
-          <p className="text-gray-600">
-            {data?.total} total submissions • Last updated: {new Date(data?.lastUpdated || '').toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-          </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
+              <p className="text-gray-600">
+                {data?.total} total submissions • Last updated: {new Date(data?.lastUpdated || '').toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+              </p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-gray-600">
+                Welcome, {session.user?.name}
+              </div>
+              <button
+                onClick={() => signOut({ callbackUrl: '/admin/login' })}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Controls */}
